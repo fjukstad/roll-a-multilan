@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed = 20.0f;
 	public Text countText; 
+	public Text winText;
 
 	private Rigidbody rb; 
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();		
 		count = 0; 
 		SetCountText();
+
 	}
 	
 	// Update is called once per frame
@@ -34,10 +36,16 @@ public class PlayerController : MonoBehaviour {
 			count = count+1; 
 			print(count); 
 			SetCountText() ;
-		}
+		} 
 	}
 
 	void SetCountText(){
+		if(count >= 8){
+			countText.text = "";
+			winText.text = "You win!!!";
+		}  else {
+			winText.text = "";
+		}
 		countText.text = "Count: " + count.ToString();  
 	}
 }
